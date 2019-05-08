@@ -1,0 +1,44 @@
+// Guessing Game
+
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+int main()
+{
+	int guess, num, tries;
+	char again;
+	cout << "Number Guessing Game" << endl;
+	cout << "--------------------" << endl << endl;
+	do
+	{
+		cout << "Guess a number between 1 and 100:";
+		cin >> guess;
+		srand(time(0));
+		num = (rand() % 100) + 1;
+		tries = 1;
+		do
+		{
+			if (guess > num)
+			{
+				cout << "Too High! Guess Again: ";
+				cin >> guess;
+				tries++;
+			}
+			else if (guess < num)
+			{
+				cout << "Too Low! Guess Again: ";
+				cin >> guess;
+				tries++;
+			}
+		} while (guess != num);
+		cout << "You got it! The number was: " << num << endl;
+		cout << "It only took you " << tries << " tries!" << endl << endl;
+		cin.get();
+		cout << "Enter Y to run again: ";
+		cin >> again;
+	} while (again == 'y' || again == 'Y');
+	return 0;
+}
